@@ -16,12 +16,8 @@ def make_pose_stamped(x, y):
     pose.header.frame_id = "level_mux_map"
     pose.pose.position.x = x
     pose.pose.position.y = y
-    pose.pose.position.z = 0.0
 
-    pose.pose.orientation.x = 0.0
-    pose.pose.orientation.y = 0.0
     pose.pose.orientation.z = 1.0
-    pose.pose.orientation.w = 0.0
 
     return pose
 
@@ -34,7 +30,6 @@ def star_publisher():
 
         pub = rospy.Publisher('/move_base_interruptable_simple/goal', PoseStamped, queue_size=3)
         pub.publish(make_pose_stamped(8, 108))
-
 
         rospy.spin()
 
