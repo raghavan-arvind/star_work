@@ -6,9 +6,19 @@ from bwi_tools import start_roslaunch_process, stop_roslaunch_process
 
 import std_msgs.msg
 from geometry_msgs.msg import Pose, Point, Quaternion, PoseStamped
+from bwi_msgs.srv import DoorHandlerInterface
 
 def roscore():
     subprocess.Popen('roscore')
+
+def open_all_doors():
+    rospy.wait_for_service("update_doors")
+    update_doors = rospy.ServiceProxy("update_doors", DoorHandlerInterface)
+    res = update_doors("", True, True, 0)
+
+    if not res.success:
+        print("-- FAILED TO OPEN ALL DOORS! --")
+
 
 def make_pose_stamped(x, y):
     pose = PoseStamped()
@@ -26,9 +36,10 @@ def star_publisher():
 
     try:
         process = start_roslaunch_process("bwi_launch", "simulation_v2.launch")
+        pub = rospy.Publisher('/move_base_interruptable_simple/goal', PoseStamped, queue_size=3)
         time.sleep(30)
 
-        pub = rospy.Publisher('/move_base_interruptable_simple/goal', PoseStamped, queue_size=3)
+        open_all_doors()
         pub.publish(make_pose_stamped(8, 108))
 
         rospy.spin()
