@@ -8,22 +8,14 @@ import std_msgs.msg
 from geometry_msgs.msg import Pose, Point, Quaternion, PoseStamped
 from bwi_msgs.srv import DoorHandlerInterface
 from move_base_msgs.msg import MoveBaseActionResult
+import atexit
+import points
 
 LOGFILE = "star.log"
 
 def log(msg):
     with open(LOGFILE, "a+") as f:
         f.write(str(msg) + "\n")
-
-START = (15.0, 110.0)
-POINTS = [(23.73, 109.22), 
-          (-1.98, 112.47), 
-          (-1.77, 104.77), 
-          (34.92, 108.36), 
-          (37.00, 101.64), 
-          (44.84, 108.27), 
-          (51.25, 113.38), 
-          (52.88, 106.3)]
 
 def roscore():
     subprocess.Popen('roscore')
@@ -48,8 +40,8 @@ def make_pose_stamped(x, y):
 
     return pose
 
-# Using global variable until we can find a better solution.
-timeStart, timeEnd = None, None
+# Using global variables until we can find a better solution.
+timeStart, timeEnd, process, pub, sub_start, sub_end = [None] * 6
 
 def clearTimes():
     global timeStart, timeEnd
@@ -58,57 +50,65 @@ def clearTimes():
 def runStarted(data):
     global timeStart
     #print("---- RUN STARTED WITH DATA %s ---- " % (data.header.stamp))
-    timeStart = rospy.Time.now()
+    timeStart = rospy.Time.now().secs
 
 def runEnded(data):
     global timeEnd
     #print("---- RUN ENDED WITH DATA %s ---- " % (data.header.stamp))
-    timeEnd = rospy.Time.now()
+    timeEnd = rospy.Time.now().secs
 
-def time_point(point):
-    process = None
-
-    try:
-        process = start_roslaunch_process("bwi_launch", "simulation_v2.launch")
-        pub = rospy.Publisher('/move_base_interruptable_simple/goal', PoseStamped, queue_size=3)
-        sub_start = rospy.Subscriber('/move_base_interruptable_simple/goal', PoseStamped, runStarted)
-        sub_end = rospy.Subscriber('/move_base_interruptable/result', MoveBaseActionResult, runEnded)
-        clearTimes()
-        rospy.sleep(15)
-
-        open_all_doors()
-        pub.publish(make_pose_stamped(*point))
-
-        # Wait for run to finish.
-        r = rospy.Rate(5)
-        while timeStart == None or timeEnd == None:
-            r.sleep()
-
-        stop_roslaunch_process(process)
-        rospy.sleep(18)
-        return timeEnd - timeStart
-
-    except rospy.ROSInterruptException:
-        pass
-
+def stop_process():
+    global process
     if process is not None:
         stop_roslaunch_process(process)
-        return False
+        rospy.sleep(18)
+
+atexit.register(stop_process)
+
+def time_point(start, end):
+    global pub
+
+    # Get to start location.
+    clearTimes()
+    pub.publish(make_pose_stamped(*start))
+    r = rospy.Rate(5)
+    while timeStart == None or timeEnd == None:
+        r.sleep()
+
+    # Time how long it takes to get to end.
+    clearTimes()
+    pub.publish(make_pose_stamped(*end))
+    r = rospy.Rate(5)
+    while timeStart == None or timeEnd == None:
+        r.sleep()
+
+    return timeEnd - timeStart
 
 def time_all_points():
+    adj, coords = points.adj, points.coords
     # Euclidean distance between two points. 
     dist = lambda p1, p2: math.sqrt(math.pow(p1[0] - p2[0], 2) + math.pow(p1[1] - p2[1], 2))
 
-    for point in POINTS:
-        log("Timing point " + str(point) + "...")
-        t = time_point(point)
-        dist_from_start = dist(START, point)
-        log(str(dist_from_start) + ", " + str(t))
-
+    for u in adj:
+        for v in adj[u]:    
+            log("Timing point " + str(u) + "," + str(v) + "...")
+            t = time_point(coords[u], coords[v])
+            dist_from_start = dist(coords[u], coords[v])
+            log(str(dist_from_start) + ", " + str(t))
 
 if __name__  == '__main__':
     if not rosgraph.is_master_online():
         roscore()
     rospy.init_node('star_publisher')
+
+    # Start simulation
+    process = start_roslaunch_process("bwi_launch", "simulation_v2.launch")
+    pub = rospy.Publisher('/move_base_interruptable_simple/goal', PoseStamped, queue_size=3)
+    sub_start = rospy.Subscriber('/move_base_interruptable_simple/goal', PoseStamped, runStarted)
+    sub_end = rospy.Subscriber('/move_base_interruptable/result', MoveBaseActionResult, runEnded)
+    clearTimes()
+    rospy.sleep(25)
+
+    open_all_doors()
     time_all_points()
 
