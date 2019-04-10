@@ -10,6 +10,6 @@ adj = {'d2': {'r27', 'i1', 'd1', 'r2'}, 'd19': {'r20', 'r19', 'd20', 'i3'}, 'd23
 if __name__ == '__main__':
     dist = lambda p1, p2: ((coords[p1][0] - coords[p2][0]) ** 2 + (coords[p1][1] - coords[p2][1]) ** 2) ** 0.5
     G = nx.Graph()
-    G.add_coords_from(n for n in coords)
+    G.add_nodes_from(n for n in coords)
     G.add_weighted_edges_from((x, y, dist(x, y)) for x in adj for y in adj[x])
     print(nx.shortest_path(G, 'r1', 'r23',weight="weight"))
