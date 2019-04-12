@@ -1,0 +1,328 @@
+Timing point d8 -> d7 ...
+Took: 0.942000150681 !
+Distance was: 1.27940162315
+Finished 1 out of 164
+Timing point d8 -> r6 ...
+Took: 4.27799987793 !
+Distance was: 2.92961304473
+Finished 2 out of 164
+Timing point d8 -> r28 ...
+Took: 7.81200003624 !
+Distance was: 8.40839579236
+Finished 3 out of 164
+Timing point d8 -> d9 ...
+Took: 7.46099996567 !
+Distance was: 8.68439602618
+Finished 4 out of 164
+Timing point d9 -> r14 ...
+Took: 3.64100003242 !
+Distance was: 4.62787592989
+Finished 5 out of 164
+Timing point d9 -> d10 ...
+Took: 3.29799985886 !
+Distance was: 1.3931083679
+Finished 6 out of 164
+Timing point d9 -> r28 ...
+Took: 2.75699996948 !
+Distance was: 2.55029545909
+Finished 7 out of 164
+Timing point d6 -> r4 ...
+Took: 4.1899998188 !
+Distance was: 2.82682254343
+Finished 8 out of 164
+Timing point d6 -> d7 ...
+Took: 7.03400015831 !
+Distance was: 6.49347756628
+Finished 9 out of 164
+Timing point d6 -> d5 ...
+Took: 2.20300006866 !
+Distance was: 1.24436391408
+Finished 10 out of 164
+Timing point d7 -> r5 ...
+Took: 3.53600001335 !
+Distance was: 3.18542798088
+Finished 11 out of 164
+Timing point d4 -> r17 ...
+Took: 4.90499997139 !
+Distance was: 4.58132610235
+Finished 12 out of 164
+Timing point d4 -> d5 ...
+Took: 2.64700007439 !
+Distance was: 0.889427122508
+Finished 13 out of 164
+Timing point d4 -> d3 ...
+Took: 1.57099986076 !
+Distance was: 1.65009963467
+Finished 14 out of 164
+Timing point d4 -> d22 ...
+Took: 6.50600004196 !
+Distance was: 7.15162698678
+Finished 15 out of 164
+Timing point d5 -> r3 ...
+Took: 2.96300005913 !
+Distance was: 3.13087327268
+Finished 16 out of 164
+Timing point d2 -> i1 ...
+Took: 4.29799985886 !
+Distance was: 3.11432056016
+Finished 17 out of 164
+Timing point d2 -> r27 ...
+Took: 3.52200007439 !
+Distance was: 4.3512556236
+Finished 18 out of 164
+Timing point d2 -> r2 ...
+Took: 4.58299994469 !
+Distance was: 3.24448949322
+Finished 19 out of 164
+Timing point d2 -> d1 ...
+Took: 2.3900001049 !
+Distance was: 1.14564111822
+Finished 20 out of 164
+Timing point d3 -> r25 ...
+Took: 4.1360001564 !
+Distance was: 6.51160805287
+Finished 21 out of 164
+Timing point d3 -> r24 ...
+Took: 5.03600001335 !
+Distance was: 6.09123321114
+Finished 22 out of 164
+Timing point d3 -> r18 ...
+Took: 3.45000004768 !
+Distance was: 3.10789433981
+Finished 23 out of 164
+Timing point d3 -> i6 ...
+Took: 2.94499993324 !
+Distance was: 5.39026957162
+Finished 24 out of 164
+Timing point d1 -> r1 ...
+Took: 3.63599991798 !
+Distance was: 3.34191610562
+Finished 25 out of 164
+Timing point r16 -> d25 ...
+Took: 3.50899982452 !
+Distance was: 3.20510194521
+Finished 26 out of 164
+Timing point r16 -> d24 ...
+Took: 3.73399996758 !
+Distance was: 3.2141430403
+Finished 27 out of 164
+Timing point r17 -> d22 ...
+Took: 5.17599987984 !
+Distance was: 4.63292115842
+Finished 28 out of 164
+Timing point r17 -> d25 ...
+Took: 3.97300004959 !
+Distance was: 4.05109881773
+Finished 29 out of 164
+Timing point r14 -> d17 ...
+Took: 3.66799998283 !
+Distance was: 4.40978133391
+Finished 30 out of 164
+Timing point r14 -> d24 ...
+Took: 2.85100007057 !
+Distance was: 4.62812935711
+Finished 31 out of 164
+Timing point r15 -> d16 ...
+Took: 4.74300003052 !
+Distance was: 5.46534106492
+Finished 32 out of 164
+Timing point r15 -> d18 ...
+Took: 2.69199991226 !
+Distance was: 5.0254494275
+Finished 33 out of 164
+Timing point r12 -> d15 ...
+Took: 2.35400009155 !
+Distance was: 3.78051220705
+Finished 34 out of 164
+Timing point r12 -> r9 ...
+Took: 6.19099998474 !
+Distance was: 8.83803246457
+Finished 35 out of 164
+Timing point r13 -> d16 ...
+Took: 3.38599991798 !
+Distance was: 4.41612179414
+Finished 36 out of 164
+Timing point r13 -> i2 ...
+Took: 3.75900006294 !
+Distance was: 4.72532459562
+Finished 37 out of 164
+Timing point r10 -> d11 ...
+Took: 4.10699987411 !
+Distance was: 4.09380951583
+Finished 38 out of 164
+Timing point r11 -> d10 ...
+Took: 4.74699997902 !
+Distance was: 3.96222230236
+Finished 39 out of 164
+Timing point r19 -> i3 ...
+Took: 4.41199994087 !
+Distance was: 3.84567504956
+Finished 40 out of 164
+Timing point r19 -> d18 ...
+Took: 2.69500017166 !
+Distance was: 1.12295638186
+Finished 41 out of 164
+Timing point r19 -> d19 ...
+Took: 3.0110001564 !
+Distance was: 4.6306109312
+Finished 42 out of 164
+Timing point d25 -> d24 ...
+Took: 5.5569999218 !
+Distance was: 5.55192708523
+Finished 43 out of 164
+Timing point r9 -> d14 ...
+Took: 2.44499993324 !
+Distance was: 5.61020201166
+Finished 44 out of 164
+Timing point r28 -> d10 ...
+Took: 4.18099999428 !
+Distance was: 3.16661460937
+Finished 45 out of 164
+Timing point r27 -> i1 ...
+Took: 1.72899985313 !
+Distance was: 4.83038377418
+Finished 46 out of 164
+Timing point r27 -> d23 ...
+Took: 4.132999897 !
+Distance was: 3.24194916734
+Finished 47 out of 164
+Timing point r26 -> d23 ...
+Took: 3.82299995422 !
+Distance was: 3.85751000301
+Finished 48 out of 164
+Timing point r25 -> i1 ...
+Took: 5.59000015259 !
+Distance was: 4.69525775185
+Finished 49 out of 164
+Timing point r25 -> r24 ...
+Took: 4.875 !
+Distance was: 7.12223749057
+Finished 50 out of 164
+Timing point r25 -> i6 ...
+Took: 3.02999997139 !
+Distance was: 2.52653549293
+Finished 51 out of 164
+Timing point r24 -> i1 ...
+Took: 3.60599994659 !
+Distance was: 5.28323181903
+Finished 52 out of 164
+Timing point r24 -> d23 ...
+Took: 5.08400011063 !
+Distance was: 5.68246981276
+Finished 53 out of 164
+Timing point r24 -> i5 ...
+Took: 3.617000103 !
+Distance was: 4.24472746342
+Finished 54 out of 164
+Timing point r24 -> i4 ...
+Took: 5.08500003815 !
+Distance was: 4.66538455684
+Finished 55 out of 164
+Timing point r24 -> i6 ...
+Took: 3.94299983978 !
+Distance was: 4.5957612354
+Finished 56 out of 164
+Timing point r23 -> d23 ...
+Took: 3.12199997902 !
+Distance was: 5.78668300977
+Finished 57 out of 164
+Timing point r23 -> i5 ...
+Took: 2.8100001812 !
+Distance was: 2.38578238197
+Finished 58 out of 164
+Timing point r23 -> i4 ...
+Took: 3.52099990845 !
+Distance was: 3.48403212938
+Finished 59 out of 164
+Timing point r22 -> d21 ...
+Took: 3.54600000381 !
+Distance was: 3.37934718727
+Finished 60 out of 164
+Timing point r21 -> d20 ...
+Took: 4.3069999218 !
+Distance was: 4.04310613095
+Finished 61 out of 164
+Timing point r20 -> d19 ...
+Took: 4.48300004005 !
+Distance was: 4.74086260894
+Finished 62 out of 164
+Timing point d14 -> i2 ...
+Took: 4.98699998856 !
+Distance was: 6.34718235492
+Finished 63 out of 164
+Timing point d14 -> d13 ...
+Took: 1.53499984741 !
+Distance was: 2.33345659977
+Finished 64 out of 164
+Timing point d15 -> i2 ...
+Took: 3.81699991226 !
+Distance was: 3.25609462008
+Finished 65 out of 164
+Timing point d16 -> d17 ...
+Took: 1.63700008392 !
+Distance was: 1.9332476204
+Finished 66 out of 164
+Timing point d16 -> i2 ...
+Took: 5.57000017166 !
+Distance was: 6.82497845006
+Finished 67 out of 164
+Timing point d17 -> i3 ...
+Took: 3.61899995804 !
+Distance was: 5.58311973371
+Finished 68 out of 164
+Timing point d10 -> d11 ...
+Took: 4.33200001717 !
+Distance was: 2.6262304545
+Finished 69 out of 164
+Timing point d11 -> d12 ...
+Took: 3.10199999809 !
+Distance was: 1.39452038917
+Finished 70 out of 164
+Timing point d12 -> r7 ...
+Took: 2.40100002289 !
+Distance was: 2.77076713193
+Finished 71 out of 164
+Timing point d12 -> d13 ...
+Took: 4.13800001144 !
+Distance was: 0.954903193884
+Finished 72 out of 164
+Timing point d13 -> r8 ...
+Took: 4.10700011253 !
+Distance was: 3.43879743304
+Finished 73 out of 164
+Timing point d18 -> i3 ...
+Took: 4.40499997139 !
+Distance was: 3.30507341902
+Finished 74 out of 164
+Timing point d19 -> d20 ...
+Took: 4.86000013351 !
+Distance was: 6.62727235096
+Finished 75 out of 164
+Timing point d19 -> i3 ...
+Took: 4.53600001335 !
+Distance was: 4.12660532773
+Finished 76 out of 164
+Timing point i1 -> i6 ...
+Took: 3.99799990654 !
+Distance was: 3.52405604527
+Finished 77 out of 164
+Timing point i5 -> d23 ...
+Took: 2.492000103 !
+Distance was: 4.48134386349
+Finished 78 out of 164
+Timing point i5 -> i4 ...
+Took: 3.37199997902 !
+Distance was: 2.69128094594
+Finished 79 out of 164
+Timing point i4 -> d22 ...
+Took: 2.19499993324 !
+Distance was: 3.50206193232
+Finished 80 out of 164
+Timing point d21 -> d20 ...
+Took: 3.26300001144 !
+Distance was: 1.33121827107
+Finished 81 out of 164
+Timing point d21 -> d22 ...
+Took: 0.75 !
+Distance was: 0.977195472461
+Finished 82 out of 164

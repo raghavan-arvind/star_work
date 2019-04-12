@@ -45,14 +45,15 @@ def make_pose_stamped(x, y):
 
 # Using global variables until we can find a better solution.
 timeStart, timeLastTurn, timeEnd, process, pub, vel, odom, curX, curY, lastX, lastY, goal = [None] * 12
-subStart, sub_end = [None] * 3
+subStart, sub_end = [None] * 2
 started, stopped = [False] * 2
 
 def runEnded(data):
     global started, stopped
-    if started and not stopped:
+    if data.status == 3 and started and not stopped:
         timeEnd = rostime()
         stopped = True
+        print("--- TIME OVERRIDED BY SUB: %s\nMESSAGE: %s" % (timeEnd, data))
 
 def odometer(data):
     global curX, curY
@@ -88,12 +89,12 @@ def speedometer(data):
         else:
             if is_turn_sequence:
                 timeLastTurn = rostime()
-                print("--- TIME LAST TURN: ", timeLastTurn)
+                #print("--- TIME LAST TURN: ", timeLastTurn)
 
             if completely_still and in_thresh(goal[0], curX) and in_thresh(goal[1], curY):
                 timeEnd = timeLastTurn if timeLastTurn is not None else rostime()
-                print("--- TIME END: ", timeEnd)
                 stopped = True
+                print("--- TIME END: ", timeEnd)
 
 
 def clearTimes():
@@ -109,28 +110,34 @@ def stop_process():
         rospy.sleep(5)
 atexit.register(stop_process)
 
-def time_point(start, end, POLL_RATE=5):
+def time_point(start, end, POLL_RATE=5, TIMEOUT=15):
     global pub, timeStart, timeEnd, subStart, started, stopped, goal
 
     # Used for polling for completion.
     r = rospy.Rate(POLL_RATE)
+    t, TIMEOUT_ITERS = 0, TIMEOUT * POLL_RATE
 
     # Get to start location.
     clearTimes()
     started, goal, subStart = True, start, rostime()
     pub.publish(make_pose_stamped(*start))
 
-    while not stopped:
+    while not stopped or timeEnd is None:
         r.sleep()
-    rospy.sleep(5)
+        t += 1
+        if t > TIMEOUT_ITERS:
+            break
+    t = 0
+    rospy.sleep(1)
 
     # Time how long it takes to get to end.
     clearTimes()
     started, goal, subStart = True, end, rostime()
     pub.publish(make_pose_stamped(*end))
-    while not stopped:
+    while not stopped or timeEnd is None:
         r.sleep()
-    rospy.sleep(2)
+        t += 1
+        if t > TIMEOUT_ITERS: return False
 
     # If we calculated a precise start/end time using cmd_vel, use that.
     # Otherwise use the basic measurements.
@@ -145,13 +152,25 @@ def time_all_points():
 
     # Euclidean distance between two points. 
     dist = lambda p1, p2: math.sqrt(math.pow(p1[0] - p2[0], 2) + math.pow(p1[1] - p2[1], 2))
+    tot = sum([len(adj[u]) for u in adj]) / 2
+    done,fin = 0, set()
+
+    edge = lambda u, v: tuple(sorted([u, v]))
 
     for u in adj:
         for v in adj[u]:    
-            log("Timing point " + str(u) + " -> " + str(v) + " ...")
-            t = time_point(coords[u], coords[v])
-            log("Took: " + str(t) + " !")
-            log("Distance was: " + str(dist(coords[u], coords[v])))
+            if edge(u,v) not in fin:
+                log("Timing point " + str(u) + " -> " + str(v) + " ...")
+                t = time_point(coords[u], coords[v])
+                while t is False:
+                    print("Failed to time point, retiming!")
+                    t = time_point(coords[u], coords[v])
+                log("Took: " + str(t) + " !")
+                log("Distance was: " + str(dist(coords[u], coords[v])))
+
+                done += 1
+                fin.add(edge(u,v))
+                log("Finished %s out of %s" % (done, tot))
 
 if __name__  == '__main__':
     if not rosgraph.is_master_online():
